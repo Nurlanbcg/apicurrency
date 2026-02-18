@@ -1,0 +1,6 @@
+name = "currencyapi"
+type = "javascript"
+account_id = "YOUR_ACCOUNT_ID_HERE"
+workers_dev = true
+main = "index.js"
+compatibility_date = "2026-02-18"
