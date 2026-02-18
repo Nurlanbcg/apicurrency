@@ -103,7 +103,7 @@ export default {
       return handleConvert(query);
     }
 
-    if (pathname === '/rates' && request.method === 'GET') {
+    if ((pathname === '/' || pathname === '/rates') && request.method === 'GET') {
       const rates = getCurrentRates();
       return sendJson(200, { base: 'AZN', rates });
     }
@@ -115,7 +115,7 @@ export default {
 
     return sendJson(404, {
       error: 'Not found',
-      routes: ['/convert?from=AZN&to=USD&amount=1', '/rates', '/refresh'],
+      routes: ['/', '/convert?from=AZN&to=USD&amount=1', '/refresh'],
     });
   },
 };

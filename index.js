@@ -126,8 +126,8 @@ const server = http.createServer((req, res) => {
     return handleConvert(parsed.query, res);
   }
 
-  if (parsed.pathname === '/rates' && req.method === 'GET') {
-    return sendJson(res, 200, { base: 'USD', rates });
+  if ((parsed.pathname === '/' || parsed.pathname === '/rates') && req.method === 'GET') {
+    return sendJson(res, 200, { base: 'AZN', rates });
   }
 
   if (parsed.pathname === '/refresh' && req.method === 'GET') {
@@ -136,7 +136,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  sendJson(res, 404, { error: 'Not found', routes: ['/convert?from=AZN&to=USD&amount=1', '/rates', '/refresh'] });
+  sendJson(res, 404, { error: 'Not found', routes: ['/', '/convert?from=AZN&to=USD&amount=1', '/refresh'] });
 });
 
 server.listen(PORT, () => {
